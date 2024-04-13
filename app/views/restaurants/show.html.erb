@@ -4,17 +4,12 @@
   <li><%= @restaurant.phone_number %></li>
   <li><%= @restaurant.category %></li>
 </ul>
-<p><%= link_to "Edit restaurant", edit_restaurant_path(@restaurant)%>
 <p><%= link_to "Add review", new_restaurant_review_path(@restaurant) %></p>
 <h2>Reviews</h2>
 <ul>
   <% @restaurant.reviews.each do |review| %>
   <li><%= review.rating %>⭐️
       <%= review.content %>
-      <%= link_to "Delete", review_path(review), data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      } %></li>
   <% end %>
 </ul>
 <p><%= link_to "Back to list", restaurants_path %>
