@@ -8,18 +8,17 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
-    @review.save ? redirect_to(restaurant_path(@restaurant)) : render("new")
-  end
-
-  def update
-    @review.update(review_params)
-    redirect_to review_path(@review)
+    if @review.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new, status_code: :unprocessable_entity
+    end
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to reviews_path, status: :see_other
+    redirect_to restaurant_path, status: :see_other
   end
 
   private
