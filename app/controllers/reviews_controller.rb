@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to restaurant_path, status: :see_other
+    redirect_to restaurant_path(@review.restaurant), status: :see_other
   end
 
   private
