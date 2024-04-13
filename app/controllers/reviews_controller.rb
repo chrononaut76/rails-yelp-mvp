@@ -11,10 +11,6 @@ class ReviewsController < ApplicationController
     @review.save ? redirect_to(restaurant_path(@restaurant)) : render("new")
   end
 
-  def edit
-
-  end
-
   def update
     @review.update(review_params)
     redirect_to review_path(@review)
